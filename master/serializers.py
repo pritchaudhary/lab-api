@@ -1,9 +1,10 @@
-from dataclasses import fields
-from rest_framework import routers, serializers, viewsets
-from .models import Departments
+from rest_framework import serializers
+from .models import Departments, SubDepartments, Parameters
 
-class DepartmentSerializer(serializers.ModelSerializer):
+
+class DepartmentsSerializer(serializers.ModelSerializer):
     name = serializers.CharField(required=True)
+    slug = serializers.SlugField(required=True)
     is_active = serializers.BooleanField(required=True)
 
     class Meta:
